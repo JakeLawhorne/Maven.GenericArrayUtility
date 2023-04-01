@@ -55,36 +55,35 @@ public class ArrayUtility<T> {
         return items;
     }
 
-    public T getMostCommonFromMerge(T[] arrayToMerge){
+    public T getMostCommonFromMerge(T[] arrayToMerge) {
         ArrayList<T> list = new ArrayList<>();
-        for(int i = 0; i < this.inputArray.length; i++){
+        for (int i = 0; i < this.inputArray.length; i++) {
             list.add(inputArray[i]);
         }
-        for(int i = 0; i < arrayToMerge.length; i++){
+        for (int i = 0; i < arrayToMerge.length; i++) {
             list.add(arrayToMerge[i]);
         }
         T[] items = (T[]) Array.newInstance(list.get(0).getClass(), list.size());
 
-        for(int i = 0; i < items.length; i++){
+        for (int i = 0; i < items.length; i++) {
             items[i] = list.get(i);
         }
 
         int count = 1, tempCount;
         T popular = items[0];
         T temp = null;
-        for (int i = 0; i < (items.length - 1); i++)
+        for (int i = 0; i < (items.length - 1); i++) {
             temp = items[i];
             tempCount = 0;
-            for (int j = 1; j < items.length; j++)
-            {
+            for (int j = 1; j < items.length; j++) {
                 if (temp == items[j])
                     tempCount++;
             }
-            if (tempCount > count)
-            {
+            if (tempCount > count) {
                 popular = temp;
                 count = tempCount;
             }
+        }
         return popular;
     }
     public Integer getNumberOfOccurrences(T valueToEvaluate) {
